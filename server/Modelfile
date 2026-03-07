@@ -1,0 +1,5 @@
+FROM qwen2.5:1.5b
+
+# Set parameters to encourage deterministic and valid JSON
+PARAMETER temperature 0.3
+

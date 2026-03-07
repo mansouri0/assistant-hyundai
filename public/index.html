@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de diagnostic mécanique assisté par IA pour véhicules Hyundai – MVP">
+    <title>Outil de Diagnostic Mécanique Hyundai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .header {
+            background-color: #002c5f;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .certainty-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .certainty-med {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .certainty-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <h1>Assistant de Diagnostic Hyundai</h1>
+        <nav>
+            <a href="/" class="text-white me-3 fw-bold text-decoration-none"
+                style="border-bottom: 2px solid white;">Diagnostic</a>
+            <a href="/history.html" class="text-white-50 text-decoration-none">Historique</a>
+        </nav>
+    </div>
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card p-4 mb-4">
+                    <form id="diagnosticForm">
+                        <div class="mb-3">
+                            <label for="model" class="form-label">Modèle Hyundai <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-select" id="model" required>
+                                <option value="" selected disabled>Sélectionnez un modèle...</option>
+                                <option value="Tucson">Tucson</option>
+                                <option value="Tucson">Tucson top grade</option>
+                                <option value="Tucson HEV">Tucson HEV</option>
+                                <option value="Tucson PHEV">Tucson PHEV</option>
+                                <option value="Kona">Kona</option>
+                                <option value="Kona EV">Kona EV</option>
+                                <option value="Kona PHEV">Kona PHEV</option>
+                                <option value="Kona HEV">Kona HEV</option>
+                                <option value="Bayon">Bayon</option>
+                                <option value="Bayon">Bayon top grade</option>
+                                <option value="Venue">Venue</option>
+                                <option value="Creta">Creta</option>
+                                <option value="ioniq 5">Ioniq 5</option>
+                                <option value="ioniq 5 n">Ioniq 5 n line</option>
+                                <option value="ioniq 6">Ioniq 6</option>
+                                <option value="Azera hybrid">Azera hybrid</option>
+                                <option value="Palisade calligraphy">Palisade calligraphy</option>
+                                <option value="Staria 11 places">Staria 11 places</option>
+                                <option value="Staria 9 places">Staria 9 places</option>
+                                <option value="i10">I10</option>
+                                <option value="grand i10">Grand i10</option>
+                                <option value="grand i10 populaire">Grand i10 populaire</option>
+                                <option value="grand i10 sedan">Grand i10 sedan</option>
+                                <option value="i20">I20</option>
+                                <option value="i20 high grade">I20 high grade</option>
+                                <option value="i20 mhev">I20 mhev</option>
+                                <option value="i30">I30</option>
+                                <option value="i30 fastback">I30 fastback</option>
+                                <option value="i30 hatchback">I30 hatchback</option>
+                            </select>
+                            <div class="form-text">Seuls les modèles Hyundai supportés sont disponibles.</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="year" class="form-label">Année <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="year" min="1990" max="2026" required
+                                    placeholder="ex: 2020">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="engineType" class="form-label">Carburant</label>
+                                <select class="form-select" id="engineType">
+                                    <option value="Essence">Essence</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Hybride">Hybride</option>
+                                    <option value="Électrique">Électrique</option>
+                                    <option value="GPL">GPL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="engineDetails" class="form-label">Type de Moteur</label>
+                                <select class="form-select" id="engineDetails">
+                                    <option value="1.0 MPI">1.0 MPI</option>
+                                    <option value="1.2 MPI">1.2 MPI</option>
+                                    <option value="1.5 DPI">1.5 DPI</option>
+                                    <option value="1.0 T-GDI">1.0 T-GDI</option>
+                                    <option value="1.2 T-GDI">1.2 T-GDI</option>
+                                    <option value="1.5 T-GDI">1.5 T-GDI</option>
+                                    <option value="1.6 T-GDI">1.6 T-GDI</option>
+                                    <option value="2.0 T-GDI">2.0 T-GDI</option>
+                                    <option value="2.0 CRDI">2.0 CRDI</option>
+                                    <option value="2.2 CRDI">2.2 CRDI</option>
+                                    <option value="2.2 Tci">2.2 Tci</option>
+                                    <option value="3.5 GDI">3.5 GDI</option>
+                                    <option value="electrique">Electrique</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="transmission" class="form-label">Transmission</label>
+                                <select class="form-select" id="transmission">
+                                    <option value="Manuelle">Manuelle</option>
+                                    <option value="Automatique">Automatique</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Codes d'erreur (OBD-II)</label>
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" id="newCodeInput" placeholder="ex: P0300">
+                                <button class="btn btn-outline-secondary" type="button" id="addCodeBtn">Ajouter</button>
+                            </div>
+                            <div id="codesList" class="d-flex flex-wrap gap-2">
+                            </div>
+                            <input type="hidden" id="errorCodes" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="symptoms" class="form-label">Symptômes</label>
+                            <textarea class="form-control" id="symptoms" rows="4"
+                                placeholder="Décrivez le problème... (Requis si aucun code erreur n'est fourni)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="submitBtn">Lancer le Diagnostic</button>
+                        <div id="loadingSpinner" class="text-center mt-3 d-none">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Chargement...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Consultation de la base de connaissances IA...</p>
+                        </div>
+                    </form>
+                </div>
+                <div id="resultsArea" class="d-none">
+                    <h3 class="mb-3">Résultats du Diagnostic</h3>
+                    <div id="streamLog" class="alert alert-info d-none mb-3 font-monospace"
+                        style="white-space: pre-wrap; max-height: 200px; overflow-y: auto; font-size: 0.8rem;"></div>
+                    <div id="diagnosticsList">
+                    </div>
+                </div>
+                <div id="errorArea" class="alert alert-danger d-none mt-3"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

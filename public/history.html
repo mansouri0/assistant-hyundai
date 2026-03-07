@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Historique des diagnostics – Outil de diagnostic Hyundai">
+    <title>Historique – Diagnostic Hyundai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+        .header {
+            background-color: #002c5f;
+            color: white;
+            padding: 20px 0;
+        }
+        .history-layout {
+            display: flex;
+            height: calc(100vh - 100px);
+        }
+        .sidebar {
+            width: 340px;
+            min-width: 260px;
+            background: #fff;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        .sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-header h5 {
+            margin: 0;
+        }
+        .sidebar-item {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .sidebar-item:hover {
+            background: #f0f6ff;
+        }
+        .sidebar-item.active {
+            background: #e2ecfa;
+            border-left: 3px solid #002c5f;
+        }
+        .sidebar-item .si-model {
+            font-weight: 600;
+            color: #002c5f;
+            margin-bottom: 2px;
+        }
+        .sidebar-item .si-meta {
+            font-size: 0.82rem;
+            color: #6c757d;
+        }
+        .sidebar-item .si-codes {
+            font-size: 0.78rem;
+            color: #495057;
+            margin-top: 4px;
+        }
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 40px;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .certainty-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .certainty-med {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .certainty-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .empty-state {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #adb5bd;
+            font-size: 1.1rem;
+        }
+        .vehicle-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .vehicle-info-grid .info-item {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+        .vehicle-info-grid .info-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #6c757d;
+            letter-spacing: 0.5px;
+        }
+        .vehicle-info-grid .info-value {
+            font-weight: 600;
+            color: #212529;
+        }
+        .delete-btn {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <h1>Assistant de Diagnostic Hyundai</h1>
+        <nav>
+            <a href="/" class="text-white-50 me-3 text-decoration-none">Diagnostic</a>
+            <a href="/history.html" class="text-white fw-bold text-decoration-none"
+                style="border-bottom: 2px solid white;">Historique</a>
+        </nav>
+    </div>
+    <div class="history-layout">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h5>Historique</h5>
+                <span id="historyCount" class="badge bg-secondary">0</span>
+            </div>
+            <div id="sidebarList">
+            </div>
+            <div id="sidebarEmpty" class="text-center text-muted py-5">
+                Aucun diagnostic enregistré.
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="detailArea">
+                <div class="empty-state" id="detailPlaceholder">
+                    Sélectionnez un diagnostic dans la barre latérale.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/history.js"></script>
+</body>
+</html>
