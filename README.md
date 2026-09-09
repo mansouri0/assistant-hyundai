@@ -1,6 +1,6 @@
 # Hyundai Mechanic Diagnostic Tool (MVP)
 
-A minimal full-stack MVP to diagnose Hyundai vehicles using a local LLM.
+A minimal full-stack MVP to diagnose Hyundai vehicles using a local LLM. (could be customized to be more general diagnostic tool)
 
 ## Architecture
 Frontend (HTML/JS) → Express Server (Node.js) → Ollama (Local AI)
