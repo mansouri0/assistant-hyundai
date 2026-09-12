@@ -1,6 +1,6 @@
-# Hyundai Mechanic Diagnostic Tool (MVP)
+# Hyundai Mechanic Diagnostic Tool
 
-A minimal full-stack MVP to diagnose Hyundai vehicles using a local LLM. (could be customized to be more general diagnostic tool)
+A minimal full-stack app to diagnose Hyundai vehicles using a local LLM. (could be customized to be more general diagnostic tool)
 
 ## Architecture
 Frontend (HTML/JS) → Express Server (Node.js) → Ollama (Local AI)
@@ -11,7 +11,7 @@ Frontend (HTML/JS) → Express Server (Node.js) → Ollama (Local AI)
 3. AI model pulled (default: `llama3.2:3b` — configurable via `OLLAMA_MODEL` env var).
 
 > A `Modelfile` is also provided for creating a custom Ollama model based on `qwen2.5:1.5b` with a lower temperature.
-
+> you can see and manage the history through the history tab 
 ## Setup
 
 ### 1. Backend Setup
