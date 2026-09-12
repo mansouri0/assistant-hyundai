@@ -6,7 +6,7 @@ A minimal full-stack MVP to diagnose Hyundai vehicles using a local LLM. (could 
 Frontend (HTML/JS) → Express Server (Node.js) → Ollama (Local AI)
 
 ## Prerequisites
-1. **Node.js** installed.
+1. **Node.js 20 LTS** installed.
 2. **Ollama** installed and running (`ollama serve`).
 3. AI model pulled (default: `llama3.2:3b` — configurable via `OLLAMA_MODEL` env var).
 
